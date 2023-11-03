@@ -1,0 +1,18 @@
+{
+  "name": "com.a9.event_so",
+  "version": "1.0.0",
+  "description": "Event SO",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mob-sakai/UpmGitExtension.git"
+  },
+  "author": "A9019",
+  "keywords": [
+    "git",
+    "editor"
+  ],
+  "displayName": "Event SO Extension",
+  "unity": "2020.3.15",
+  "type": "tool"
+}
