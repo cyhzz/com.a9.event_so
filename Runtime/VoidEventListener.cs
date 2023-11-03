@@ -2,36 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
-public class VoidEventListener : MonoBehaviour
+namespace Com.A9.EventSO
 {
-    public VoidEventChannelSO VoidGameEvent;
-    public UnityEvent OnEventRaised;
-
-    private void OnEnable()
+    public class VoidEventListener : MonoBehaviour
     {
-        if (VoidGameEvent == null)
-        {
-            return;
-        }
-        VoidGameEvent.OnEventRaised += Respond;
-    }
+        public VoidEventChannelSO VoidGameEvent;
+        public UnityEvent OnEventRaised;
 
-    private void OnDisable()
-    {
-        if (VoidGameEvent == null)
+        private void OnEnable()
         {
-            return;
+            if (VoidGameEvent == null)
+            {
+                return;
+            }
+            VoidGameEvent.OnEventRaised += Respond;
         }
-        VoidGameEvent.OnEventRaised -= Respond;
-    }
 
-    public void Respond()
-    {
-        if (OnEventRaised == null)
+        private void OnDisable()
         {
-            return;
+            if (VoidGameEvent == null)
+            {
+                return;
+            }
+            VoidGameEvent.OnEventRaised -= Respond;
         }
-        OnEventRaised.Invoke();
+
+        public void Respond()
+        {
+            if (OnEventRaised == null)
+            {
+                return;
+            }
+            OnEventRaised.Invoke();
+        }
     }
 }
+

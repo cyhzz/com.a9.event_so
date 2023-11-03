@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
-[CreateAssetMenu(menuName = "Events/Void Event Channel")]
-public class VoidEventChannelSO : ScriptableObject
+namespace Com.A9.EventSO
 {
-    public UnityAction OnEventRaised;
-    public void RaiseEvent()
+    [CreateAssetMenu(menuName = "Events/Void Event Channel")]
+    public class VoidEventChannelSO : ScriptableObject
     {
-        OnEventRaised.Invoke();
+        public UnityAction OnEventRaised;
+        public void RaiseEvent()
+        {
+            OnEventRaised.Invoke();
+        }
     }
 }

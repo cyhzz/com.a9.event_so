@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
-[CreateAssetMenu(menuName = "Events/String Event Channel")]
-public class StringEventChannelSO : ScriptableObject
+namespace Com.A9.EventSO
 {
-    public UnityAction<string> OnEventRaised;
-    public void RaiseEvent(string value)
+    [CreateAssetMenu(menuName = "Events/String Event Channel")]
+    public class StringEventChannelSO : ScriptableObject
     {
-        OnEventRaised.Invoke(value);
+        public UnityAction<string> OnEventRaised;
+        public void RaiseEvent(string value)
+        {
+            OnEventRaised.Invoke(value);
+        }
     }
 }
