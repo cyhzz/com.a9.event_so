@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-namespace Com.A9.EventSO
+namespace A9.EventSO
 {
     public class VoidEventListener : MonoBehaviour
     {
