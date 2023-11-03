@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-namespace A9.EventSO
+namespace Com.A9.EventSO
 {
     [CreateAssetMenu(menuName = "Events/Void Event Channel")]
     public class VoidEventChannelSO : ScriptableObject
