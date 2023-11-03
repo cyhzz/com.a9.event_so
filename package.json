@@ -13,6 +13,5 @@
     "editor"
   ],
   "displayName": "Event SO Extension",
-  "unity": "2020.3",
-  "type": "tool"
+  "unity": "2020.3"
 }
