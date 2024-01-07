@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class StringEventListener : MonoBehaviour
+public class IntEventListener : MonoBehaviour
 {
-    public StringEventChannelSO StringGameEvent;
-    public UnityEvent<string> OnEventRaised;
+    public IntEventChannelSO StringGameEvent;
+    public UnityEvent<int> OnEventRaised;
 
-    void Start()
+    void Awake()
     {
-        StringGameEvent = Resources.Load<StringEventChannelSO>($"EventSO/{StringGameEvent.name}");
+        StringGameEvent = Resources.Load<IntEventChannelSO>($"EventSO/{StringGameEvent.name}");
     }
 
     private void OnEnable()
@@ -31,7 +31,7 @@ public class StringEventListener : MonoBehaviour
         StringGameEvent.OnEventRaised -= Respond;
     }
 
-    public void Respond(string str)
+    public void Respond(int str)
     {
         if (OnEventRaised == null)
         {
