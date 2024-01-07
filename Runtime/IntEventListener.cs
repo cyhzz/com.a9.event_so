@@ -3,40 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class IntEventListener : MonoBehaviour
+namespace Com.A9.EventSO
 {
-    public IntEventChannelSO StringGameEvent;
-    public UnityEvent<int> OnEventRaised;
 
-    void Awake()
+    public class IntEventListener : MonoBehaviour
     {
-        StringGameEvent = Resources.Load<IntEventChannelSO>($"EventSO/{StringGameEvent.name}");
-    }
+        public IntEventChannelSO StringGameEvent;
+        public UnityEvent<int> OnEventRaised;
 
-    private void OnEnable()
-    {
-        if (StringGameEvent == null)
+        void Awake()
         {
-            return;
+            StringGameEvent = Resources.Load<IntEventChannelSO>($"EventSO/{StringGameEvent.name}");
         }
-        StringGameEvent.OnEventRaised += Respond;
+
+        private void OnEnable()
+        {
+            if (StringGameEvent == null)
+            {
+                return;
+            }
+            StringGameEvent.OnEventRaised += Respond;
+        }
+
+        private void OnDisable()
+        {
+            if (StringGameEvent == null)
+            {
+                return;
+            }
+            StringGameEvent.OnEventRaised -= Respond;
+        }
+
+        public void Respond(int str)
+        {
+            if (OnEventRaised == null)
+            {
+                return;
+            }
+            OnEventRaised.Invoke(str);
+        }
     }
 
-    private void OnDisable()
-    {
-        if (StringGameEvent == null)
-        {
-            return;
-        }
-        StringGameEvent.OnEventRaised -= Respond;
-    }
-
-    public void Respond(int str)
-    {
-        if (OnEventRaised == null)
-        {
-            return;
-        }
-        OnEventRaised.Invoke(str);
-    }
 }

@@ -3,40 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class VoidEventListener : MonoBehaviour
+namespace Com.A9.EventSO
 {
-    public VoidEventChannelSO VoidGameEvent;
-    public UnityEvent OnEventRaised;
-
-    void Awake()
+    public class VoidEventListener : MonoBehaviour
     {
-        VoidGameEvent = Resources.Load<VoidEventChannelSO>($"EventSO/{VoidGameEvent.name}");
-    }
+        public VoidEventChannelSO VoidGameEvent;
+        public UnityEvent OnEventRaised;
 
-    private void OnEnable()
-    {
-        if (VoidGameEvent == null)
+        void Awake()
         {
-            return;
+            VoidGameEvent = Resources.Load<VoidEventChannelSO>($"EventSO/{VoidGameEvent.name}");
         }
-        VoidGameEvent.OnEventRaised += Respond;
+
+        private void OnEnable()
+        {
+            if (VoidGameEvent == null)
+            {
+                return;
+            }
+            VoidGameEvent.OnEventRaised += Respond;
+        }
+
+        private void OnDisable()
+        {
+            if (VoidGameEvent == null)
+            {
+                return;
+            }
+            VoidGameEvent.OnEventRaised -= Respond;
+        }
+
+        public void Respond()
+        {
+            if (OnEventRaised == null)
+            {
+                return;
+            }
+            OnEventRaised.Invoke();
+        }
     }
 
-    private void OnDisable()
-    {
-        if (VoidGameEvent == null)
-        {
-            return;
-        }
-        VoidGameEvent.OnEventRaised -= Respond;
-    }
-
-    public void Respond()
-    {
-        if (OnEventRaised == null)
-        {
-            return;
-        }
-        OnEventRaised.Invoke();
-    }
 }

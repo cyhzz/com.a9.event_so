@@ -3,40 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class StringEventListener : MonoBehaviour
+namespace Com.A9.EventSO
 {
-    public StringEventChannelSO StringGameEvent;
-    public UnityEvent<string> OnEventRaised;
-
-    void Start()
+    public class StringEventListener : MonoBehaviour
     {
-        StringGameEvent = Resources.Load<StringEventChannelSO>($"EventSO/{StringGameEvent.name}");
-    }
+        public StringEventChannelSO StringGameEvent;
+        public UnityEvent<string> OnEventRaised;
 
-    private void OnEnable()
-    {
-        if (StringGameEvent == null)
+        void Start()
         {
-            return;
+            StringGameEvent = Resources.Load<StringEventChannelSO>($"EventSO/{StringGameEvent.name}");
         }
-        StringGameEvent.OnEventRaised += Respond;
-    }
 
-    private void OnDisable()
-    {
-        if (StringGameEvent == null)
+        private void OnEnable()
         {
-            return;
+            if (StringGameEvent == null)
+            {
+                return;
+            }
+            StringGameEvent.OnEventRaised += Respond;
         }
-        StringGameEvent.OnEventRaised -= Respond;
-    }
 
-    public void Respond(string str)
-    {
-        if (OnEventRaised == null)
+        private void OnDisable()
         {
-            return;
+            if (StringGameEvent == null)
+            {
+                return;
+            }
+            StringGameEvent.OnEventRaised -= Respond;
         }
-        OnEventRaised.Invoke(str);
+
+        public void Respond(string str)
+        {
+            if (OnEventRaised == null)
+            {
+                return;
+            }
+            OnEventRaised.Invoke(str);
+        }
     }
 }
