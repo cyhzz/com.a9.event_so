@@ -16,7 +16,7 @@ namespace Com.A9.EventSO
 
             if (fs.OnEventRaised == null)
             {
-                Debug.LogWarning("no so listener");
+                Debug.LogWarning($"no so listener on {name}");
             }
             fs.OnEventRaised?.Invoke();
         }
