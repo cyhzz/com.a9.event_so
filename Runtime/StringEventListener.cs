@@ -10,7 +10,7 @@ namespace Com.A9.EventSO
         public StringEventChannelSO StringGameEvent;
         public UnityEvent<string> OnEventRaised;
 
-        void Start()
+        void Awake()
         {
             StringGameEvent = Resources.Load<StringEventChannelSO>($"EventSO/{StringGameEvent.name}");
         }
