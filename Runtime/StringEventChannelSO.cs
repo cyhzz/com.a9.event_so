@@ -13,7 +13,9 @@ namespace Com.A9.EventSO
         public void RaiseEvent(string value)
         {
             var fs = Resources.Load<StringEventChannelSO>($"EventSO/{name}");
-            fs.OnEventRaised.Invoke(value);
+            Debug.LogError(name);
+            Debug.LogError(fs);
+            // fs.OnEventRaised.Invoke(value);
         }
     }
 }
